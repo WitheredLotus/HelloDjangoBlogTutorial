@@ -53,6 +53,8 @@ class Post(models.Model):
 
     author = models.ForeignKey(User, verbose_name='作者', on_delete=models.CASCADE)
 
+    views = models.PositiveIntegerField(default=0, editable=False)
+
     class Meta:
         verbose_name = '文章'
         verbose_name_plural = verbose_name
@@ -80,3 +82,7 @@ class Post(models.Model):
         self.excerpt = strip_tags(md.convert(self.body))[:54]
 
         super().save(*args, **kwargs)
+
+    def increase_views(self):
+        self.views += 1
+        self.save(update_fields=['views'])
