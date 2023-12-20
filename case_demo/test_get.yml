@@ -1,0 +1,16 @@
+test_get1:
+  name: 简单 get 请求
+  request:
+    method: GET
+    url: /get
+  validate:
+    - eq: [status_code, 200]
+
+test_get2:
+-
+  name: 用例也可以写的 list 下
+  request:
+    method: GET
+    url: /get
+  validate:
+    - eq: [status_code, 200]

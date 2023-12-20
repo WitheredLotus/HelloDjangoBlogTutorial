@@ -1,0 +1,55 @@
+2023-12-20 16:56:12 [INFO]: 执行文件-> test_a.yml
+2023-12-20 16:56:12 [INFO]: base_url-> http://httpbin.org
+2023-12-20 16:56:12 [INFO]: config variables-> {}
+2023-12-20 16:56:12 [INFO]: 运行用例-> test1
+2023-12-20 16:56:12 [INFO]: yml raw  -->: {'method': 'post', 'url': 'http://httpbin.org/post', 'json': {'username': 'test', 'password': '123456'}}
+2023-12-20 16:56:12 [INFO]: ------  request info   ------ 
+post http://httpbin.org/post
+headers: {
+    "User-Agent": "python-requests/2.31.0",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept": "*/*",
+    "Connection": "keep-alive"
+}
+json: {
+    "username": "test",
+    "password": "123456"
+}
+2023-12-20 16:56:12 [INFO]: ------  response info   ------ 
+url: http://httpbin.org/post
+status_code: 200 OK
+headers: {
+    "Date": "Wed, 20 Dec 2023 08:56:14 GMT",
+    "Content-Type": "application/json",
+    "Content-Length": "542",
+    "Connection": "keep-alive",
+    "Server": "gunicorn/19.9.0",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Credentials": "true"
+}
+cookies: {}
+body: {
+    "args": {},
+    "data": "{\"username\": \"test\", \"password\": \"123456\"}",
+    "files": {},
+    "form": {},
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "Content-Length": "42",
+        "Content-Type": "application/json",
+        "Host": "httpbin.org",
+        "User-Agent": "python-requests/2.31.0",
+        "X-Amzn-Trace-Id": "Root=1-6582ac2e-1b0dfaa34427758d2e1116ba"
+    },
+    "json": {
+        "password": "123456",
+        "username": "test"
+    },
+    "origin": "112.10.239.225",
+    "url": "http://httpbin.org/post"
+}
+
+2023-12-20 16:56:13 [INFO]: validate 校验内容-> [{'eq': ['status_code', 200]}, {'eq': ['$..origin', '112.10.239.225']}]
+2023-12-20 16:56:13 [INFO]: validate 校验结果-> eq: [200, 200]
+2023-12-20 16:56:13 [INFO]: validate 校验结果-> eq: [112.10.239.225, 112.10.239.225]

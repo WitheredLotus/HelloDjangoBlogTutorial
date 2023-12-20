@@ -1,0 +1,4 @@
+2023-12-20 16:50:05 [INFO]: 执行文件-> test_a.yml
+2023-12-20 16:50:05 [INFO]: base_url-> http://httpbin.org
+2023-12-20 16:50:05 [INFO]: config variables-> {}
+2023-12-20 16:50:05 [INFO]: 运行用例-> test1

@@ -1,0 +1,16 @@
+{
+    "base_url": "http://httpbin.org",
+    "time": {
+        "start": "2023-12-20 16:56:42",
+        "stop": "2023-12-20 16:56:42",
+        "duration": "0.72s"
+    },
+    "statistic": {
+        "failed": 0,
+        "broken": 0,
+        "skipped": 0,
+        "passed": 1,
+        "total": 1,
+        "successful": "100.00%"
+    }
+}

@@ -1,0 +1,85 @@
+************************* case_demo/test_a.yml::test1 *************************
+测试结果 outcome：failed   
+用例耗时 duration：0.6607608000012988
+异常 exception：<ExceptionInfo AssertionError("112.10.239.225-><class 'str'> == 183.193.25.5-><class 'str'>\nassert '112.10.239.225' == '183.193.25.5'\n  - 183.193.25.5\n  + 112.10.239.225") tblen=19>
+exception详细日志：request = <FixtureRequest for <Function test1>>, requests_session = <pytest_yaml_yoyo.http_session.HttpSession object at 0x000001F8C79D9090>
+
+>   ???
+
+test_a.py:2: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\YuSheng\.virtualenvs\api_test\lib\site-packages\pytest_yaml_yoyo\runner.py:316: in execute_yaml_case
+    self.validate_response(response, validate_value)
+C:\Users\YuSheng\.virtualenvs\api_test\lib\site-packages\pytest_yaml_yoyo\runner.py:696: in validate_response
+    validate.equals(actual_value, expect_value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+check_value = '112.10.239.225', expect_value = '183.193.25.5'
+
+    def equals(check_value, expect_value):
+        check_value = None if check_value == 'None' else check_value
+        expect_value = None if expect_value == 'None' else expect_value
+>       assert check_value == expect_value, f'{check_value}->{type(check_value)} == {expect_value}->{type(expect_value)}'
+E       AssertionError: 112.10.239.225-><class 'str'> == 183.193.25.5-><class 'str'>
+E       assert '112.10.239.225' == '183.193.25.5'
+E         - 183.193.25.5
+E         + 112.10.239.225
+
+C:\Users\YuSheng\.virtualenvs\api_test\lib\site-packages\pytest_yaml_yoyo\validate.py:10: AssertionError
+Captured log call[32mINFO    [0m pytest_yaml_yoyo.log:runner.py:150 执行文件-> test_a.yml
+[32mINFO    [0m pytest_yaml_yoyo.log:runner.py:151 base_url-> http://httpbin.org
+[32mINFO    [0m pytest_yaml_yoyo.log:runner.py:152 config variables-> {}
+[32mINFO    [0m pytest_yaml_yoyo.log:runner.py:154 运行用例-> test1
+[32mINFO    [0m pytest_yaml_yoyo.log:runner.py:408 yml raw  -->: {'method': 'post', 'url': 'http://httpbin.org/post', 'json': {'username': 'test', 'password': '123456'}}
+[32mINFO    [0m pytest_yaml_yoyo.log:runner.py:432 ------  request info   ------ 
+post http://httpbin.org/post
+headers: {
+    "User-Agent": "python-requests/2.31.0",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept": "*/*",
+    "Connection": "keep-alive"
+}
+json: {
+    "username": "test",
+    "password": "123456"
+}
+[32mINFO    [0m pytest_yaml_yoyo.log:runner.py:454 ------  response info   ------ 
+url: http://httpbin.org/post
+status_code: 200 OK
+headers: {
+    "Date": "Wed, 20 Dec 2023 08:55:56 GMT",
+    "Content-Type": "application/json",
+    "Content-Length": "542",
+    "Connection": "keep-alive",
+    "Server": "gunicorn/19.9.0",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Credentials": "true"
+}
+cookies: {}
+body: {
+    "args": {},
+    "data": "{\"username\": \"test\", \"password\": \"123456\"}",
+    "files": {},
+    "form": {},
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "Content-Length": "42",
+        "Content-Type": "application/json",
+        "Host": "httpbin.org",
+        "User-Agent": "python-requests/2.31.0",
+        "X-Amzn-Trace-Id": "Root=1-6582ac1c-68a0dd871a96cee7640ab0e3"
+    },
+    "json": {
+        "password": "123456",
+        "username": "test"
+    },
+    "origin": "112.10.239.225",
+    "url": "http://httpbin.org/post"
+}
+
+[32mINFO    [0m pytest_yaml_yoyo.log:runner.py:315 validate 校验内容-> [{'eq': ['status_code', 200]}, {'eq': ['$..origin', '183.193.25.5']}]
+[32mINFO    [0m pytest_yaml_yoyo.log:runner.py:694 validate 校验结果-> eq: [200, 200]
+[32mINFO    [0m pytest_yaml_yoyo.log:runner.py:694 validate 校验结果-> eq: [112.10.239.225, 183.193.25.5]
+
+

@@ -1,0 +1,28 @@
+config:
+  name: 参数关联-用例a提取结果给到用例b
+
+test_a:
+  name: extract提取结果
+  request:
+    method: POST
+    url: /post
+    json:
+      username: test
+      password: "123456"
+  extract:
+      url:  body.url
+  validate:
+  - eq: [status_code, 200]
+  - eq: [headers.Server, gunicorn/19.9.0]
+  - eq: [$..username, test]
+  - eq: [body.json.username, test]
+
+test_b:
+  name: 引用上个接口返回
+  request:
+    method: GET
+    url: http://httpbin.org/get
+    headers:
+      url: ${url}
+  validate:
+  - eq: [status_code, 200]

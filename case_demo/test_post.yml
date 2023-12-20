@@ -1,0 +1,19 @@
+config:
+  name: post示例
+  variables:
+    username: test
+    password: aa123456
+
+test_post:
+  name: post
+  request:
+    method: POST
+    url: /post
+    json:
+      username: ${username}
+      password: ${password}
+  validate:
+  - eq: [status_code, 200]
+  - eq: [headers.Server, gunicorn/19.9.0]
+  - eq: [$..username, test]
+  - eq: [body.json.username, test]
