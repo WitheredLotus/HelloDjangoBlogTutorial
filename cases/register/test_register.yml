@@ -1,0 +1,31 @@
+
+test_register_success:
+  variables:
+    user_name: test_${fake.random_number(6)}
+  name: 注册成功
+  request:
+    method: post
+    url: /api/v1/register
+    json:
+      username: ${user_name}
+      password: 123456
+  validate:
+    - eq: [status_code, 200]
+    - eq: ['$.code', 0]
+    - eq: ['$.msg', "register success!"]
+#    - eq: ['$.msg', "${user_name}"]
+
+
+
+test_register_fail:
+  name: 用户已注册
+  request:
+    method: post
+    url: /api/v1/register
+    json:
+      username: test_237
+      password: 123456
+  validate:
+    - eq: [status_code, 200]
+    - eq: ['$.code', 2000]
+    - eq: ['$.msg', "test_237用户已被注册"]

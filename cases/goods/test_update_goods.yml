@@ -1,0 +1,42 @@
+
+config:
+  variables:
+    name: ${fake.safe_color_name()}
+    code: sp_${fake.random_number(12)}
+test_update_goods:
+-
+  name: 添加商品
+  variables:
+    goods_name: ${name}
+    goods_code: ${code}
+  request:
+    method: post
+    url: /api/v2/goods
+    json:
+      goodsname: ${goods_name}
+      goodscode: ${goods_code}
+  extract:
+    sp_id: '$.data.id'
+  validate:
+    - eq: [ status_code, 200 ]
+    - eq: [ '$.code', 0 ]
+    - eq: [ '$.msg', "success!" ]
+    - eq: [ '$..goodsname', '${goods_name}' ]
+    - eq: [ '$..goodscode', '${goods_code}' ]
+
+-
+  name: 修改商品
+  variables:
+    goods_name: ${fake.safe_color_name()}
+  request:
+    method: put
+    url: /api/v2/goods/${sp_id}
+    json:
+      goodsname: ${goods_name}
+      goodscode: ${code}
+  validate:
+    - eq: [ status_code, 200 ]
+    - eq: [ '$.code', 0 ]
+    - eq: [ '$.msg', "success!" ]
+    - eq: [ '$..goodsname', '${goods_name}' ]
+    - eq: [ '$..goodscode', '${code}' ]

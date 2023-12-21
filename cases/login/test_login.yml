@@ -1,0 +1,15 @@
+
+test_login:
+  name: 登录成功
+  fixtures: requests_function
+  request:
+    method: post
+    url: /api/v1/login
+    json:
+      username: test_237
+      password: 123456
+  validate:
+    - eq: [ status_code, 200 ]
+    - eq: [ '$.code', 0 ]
+    - eq: [ '$.msg', "login success!" ]
+    - len_eq: ['$.token', 40]
