@@ -9,7 +9,9 @@ class Config:
 
 class TestConfig(Config):
     """测试环境"""
-    BASE_URL = 'http://httpbin.org'
+    # BASE_URL = 'http://httpbin.org'
+    # BASE_URL = 'http://124.70.221.221:8201'
+    BASE_URL = 'http://47.116.12.183:8201/'
     BASE_URL2 = 'http://www.example.com'
     USERNAME = "test"
 
