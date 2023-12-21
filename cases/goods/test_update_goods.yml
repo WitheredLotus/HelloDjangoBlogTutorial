@@ -39,4 +39,4 @@ test_update_goods:
     - eq: [ '$.code', 0 ]
     - eq: [ '$.msg', "success!" ]
     - eq: [ '$..goodsname', '${goods_name}' ]
-    - eq: [ '$..goodscode', '${code}' ]
+    - eq: ['$..goodscode', '${code}']
