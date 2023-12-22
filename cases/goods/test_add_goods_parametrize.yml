@@ -1,0 +1,27 @@
+
+test_add_goods_parametrize:
+  name: 添加商品
+  variables:
+    goods_name: ${fake.safe_color_name()}
+    goods_code: sp_${fake.random_number(12)}
+  parameters:
+    merchantid: ["", '10086', 'abcd', 'abc123445', '21342134234234sdfsdf']
+    merchantname: ["1", '2', '3', '4', '5']
+  request:
+    method: post
+    url: /api/v2/goods
+    json:
+      goodsname: ${goods_name}
+      goodscode: ${goods_code}
+      merchantid: ${merchantid}
+      merchantname: ${merchantname}
+  extract:
+    sp_id: '$.data.id'
+  validate:
+    - eq: [ status_code, 200 ]
+    - eq: [ '$.code', 0 ]
+    - eq: [ '$.msg', "success!" ]
+    - eq: [ '$..goodsname', '${goods_name}' ]
+    - eq: [ '$..goodscode', '${goods_code}' ]
+    - eq: [ '$..merchantid', '${merchantid}' ]
+    - eq: [ '$..merchantname', '${merchantname}' ]
