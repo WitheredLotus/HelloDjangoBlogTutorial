@@ -1,0 +1,65 @@
+
+test_add_goods_sleep:
+-
+  name: 等待2.3秒添加商品,请求之前等待写在请求之前
+  variables:
+    goods_name: ${fake.safe_color_name()}_${fake.safe_color_name()}
+    goods_code: sp_${fake.random_number(12)}
+  sleep: 2.3
+  request:
+    method: post
+    url: /api/v2/goods
+    json:
+      goodsname: ${goods_name}
+      goodscode: ${goods_code}
+  extract:
+    sp_id: '$.data.id'
+  validate:
+    - eq: [ status_code, 200 ]
+    - eq: [ '$.code', 0 ]
+    - eq: [ '$.msg', "success!" ]
+    - eq: [ '$..goodsname', '${goods_name}' ]
+    - eq: [ '$..goodscode', '${goods_code}' ]
+-
+  name: 上一个添加商品请求发送后, 等待1秒再次添加，
+  sleep: 1
+-
+  name: 添加商品等待1秒后发送请求
+  variables:
+    goods_name: ${fake.safe_color_name()}_${fake.safe_color_name()}
+    goods_code: sp_${fake.random_number(12)}
+  request:
+    method: post
+    url: /api/v2/goods
+    json:
+      goodsname: ${goods_name}
+      goodscode: ${goods_code}
+
+  extract:
+    sp_id: '$.data.id'
+  validate:
+    - eq: [ status_code, 200 ]
+    - eq: [ '$.code', 0 ]
+    - eq: [ '$.msg', "success!" ]
+    - eq: [ '$..goodsname', '${goods_name}' ]
+    - eq: [ '$..goodscode', '${goods_code}' ]
+-
+  name: 等待1秒后添加商品
+  variables:
+    goods_name: ${fake.safe_color_name()}_${fake.safe_color_name()}
+    goods_code: sp_${fake.random_number(12)}
+  request:
+    method: post
+    url: /api/v2/goods
+    json:
+      goodsname: ${goods_name}
+      goodscode: ${goods_code}
+  sleep: 1
+  extract:
+    sp_id: '$.data.id'
+  validate:
+    - eq: [ status_code, 200 ]
+    - eq: [ '$.code', 0 ]
+    - eq: [ '$.msg', "success!" ]
+    - eq: [ '$..goodsname', '${goods_name}' ]
+    - eq: [ '$..goodscode', '${goods_code}' ]

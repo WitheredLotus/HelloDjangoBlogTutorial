@@ -1,6 +1,8 @@
 
+config:
+  mark: add_goods
+
 test_add_goods:
--
   name: 添加商品
   variables:
     goods_name: ${fake.safe_color_name()}_${fake.safe_color_name()}

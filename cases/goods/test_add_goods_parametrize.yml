@@ -2,7 +2,7 @@
 test_add_goods_parametrize:
   name: 添加商品
   variables:
-    goods_name: ${fake.safe_color_name()}
+    goods_name: ${fake.safe_color_name()}_${fake.safe_color_name()}
     goods_code: sp_${fake.random_number(12)}
   parameters:
     merchantid: ["", '10086', 'abcd', 'abc123445', '21342134234234sdfsdf']

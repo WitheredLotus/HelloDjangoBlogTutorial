@@ -1,7 +1,7 @@
 
-test_add_goods:
--
+test_add_goods_runtime:
   name: 添加商品
+  mark: runtime(1)
   variables:
     goods_name: ${fake.safe_color_name()}_${fake.safe_color_name()}
     goods_code: sp_${fake.random_number(12)}
